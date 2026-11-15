@@ -88,7 +88,11 @@ NASA NSSDCA, NASA ILRS, NASA JPL, NASA RPS, ESA Space Debris Office (DISCOS/MAST
 ## Autores
 
 1.Daniel Molina.
+
 2.Mariana Cortes.
+
 3.Andres Lopez.
+
 4.Cristian Valencia.
+
 5.Carlos Acosta.
