@@ -18,6 +18,7 @@ export const ESCENAS = [
   { id: 'propuesta', acto: 2, numero: 14, titulo: 'La solución que proponemos', corto: 'Propuesta' },
   { id: 'dashboard', acto: 3, numero: null, titulo: 'Dashboard', corto: 'Dashboard' },
   { id: 'referencias', acto: 3, numero: null, titulo: 'Referencias', corto: 'Referencias' },
+  { id: 'fotos', acto: 3, numero: null, titulo: 'Fotos y Objetos Perdidos', corto: 'Fotos y Objetos Perdidos' },
 ];
 
 export const escenaPorId = (id) => ESCENAS.find((e) => e.id === id);

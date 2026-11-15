@@ -15,6 +15,7 @@ import {
   DANOS, DANOS_TEXTO, RADIACTIVOS, RADIACTIVOS_TEXTO, SIN_NOMBRE, SIN_NOMBRE_TEXTO, NO_ES_BASURA, ASAT, PAISES_TEXTO,
   UNION, UNION_TEXTO, CORTOS, CORTOS_NOTA, SOLUCIONES, MEDIDAS_TECNICAS, SOLUCIONES_FALTA, PROPUESTA, SESGOS, EFECTOS, FUTURO, MITOS, HISTORIA_1957,
 } from '../data/contenido';
+import SeccionCortos from '../ui/SeccionCortos';
 
 function Pagina({ acto = 'Acto 2', numero, titulo, intro, children, angosto, visual }) {
   const siguienteEscena = useAppStore((s) => s.siguienteEscena);
@@ -156,13 +157,7 @@ export function Union() {
 }
 
 export function Cortos() {
-  const modo = useAppStore((s) => s.modo);
-  return (
-    <Pagina numero={12} titulo="Cortos para tomar conciencia" intro={modo === 'ninos' ? 'Cuatro historias cortas con personajes propios. Cada una termina con un dato real.' : CORTOS_NOTA}>
-      <div className="tarjetas">{CORTOS.map((c, i) => <div key={c.titulo} className="tarjeta"><div style={{ display: 'flex', gap: 10, alignItems: 'center' }}><MiniPlaneta tipo={['papel', 'luna', 'satelite', 'tierra'][i]} size={44} /><div><small>Corto {i + 1} · 15–30 s</small><h3 style={{ margin: 0 }}>"{c.titulo}"</h3></div></div><p style={{ marginTop: 8 }}>{c.sinopsis}</p><p className="mini"><strong>Dato de cierre:</strong> {c.dato} <Refs ids={c.refs} /></p><span className="pendiente">Video: por completar (archivo o enlace, responsable)</span></div>)}</div>
-      {modo === 'ninos' && <div style={{ marginTop: 24 }}><h2>Desde cuándo pasa esto</h2><LineaTiempo items={HISTORIA_1957} /></div>}
-    </Pagina>
-  );
+  return <SeccionCortos />;
 }
 
 const ANIM_SOLUCION = ['regla5', 'carta', 'moratoria', 'adrasj', 'clearspace', 'lunarecycle', 'onesmallstep', 'proteccion'];
