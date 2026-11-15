@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useAppStore } from '../store/useAppStore';
+import { getLang } from '../i18n';
 import datosObjetos from '../data/objetos.json';
 import { Refs } from './Referencias';
 import './AnexoFotosModal.css';
@@ -14,16 +15,10 @@ export default function AnexoFotosModal() {
   const setModo = useAppStore((s) => s.setModo);
   const setEscena = useAppStore((s) => s.setEscena);
   const anteriorEscena = useAppStore((s) => s.anteriorEscena);
-  const lang = useAppStore((s) => s.lang);
-  const setLang = useAppStore((s) => s.setLang);
-
-  const [idiomaLocal, setIdiomaLocal] = useState(lang === 'en' ? 'EN' : 'ES');
-  const idioma = lang ? (lang === 'en' ? 'EN' : 'ES') : idiomaLocal;
-
-  const cambiarIdioma = (nuevo) => {
-    setIdiomaLocal(nuevo);
-    if (setLang) setLang(nuevo.toLowerCase());
-  };
+  const storeLang = useAppStore((s) => s.lang);
+  const lang = storeLang || getLang() || 'en';
+  const es = lang === 'es';
+  const idioma = es ? 'ES' : 'EN';
 
   const [tabActiva, setTabActiva] = useState('todos');
   const [filtroPerdidos, setFiltroPerdidos] = useState('');
@@ -388,24 +383,6 @@ export default function AnexoFotosModal() {
               onClick={() => setModo('org')}
             >
               {idioma === 'ES' ? 'Organizaciones' : 'Organizations'}
-            </button>
-          </div>
-
-          {/* Selector de Idioma */}
-          <div className="cortos-idioma-toggle" role="group" aria-label="Idioma">
-            <button
-              type="button"
-              className={`cortos-btn-idioma ${idioma === 'ES' ? 'activo' : ''}`}
-              onClick={() => cambiarIdioma('ES')}
-            >
-              ES
-            </button>
-            <button
-              type="button"
-              className={`cortos-btn-idioma ${idioma === 'EN' ? 'activo' : ''}`}
-              onClick={() => cambiarIdioma('EN')}
-            >
-              EN
             </button>
           </div>
 

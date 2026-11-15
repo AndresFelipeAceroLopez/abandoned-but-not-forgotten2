@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { useAppStore } from '../store/useAppStore';
+import { getLang } from '../i18n';
 import { Refs } from './Referencias';
 import LineaTiempo from './LineaTiempo';
 import { HISTORIA_1957 } from '../data/contenido';
@@ -120,19 +121,45 @@ const CORTOS_INFO = {
   ],
 };
 
+function VideoPlayer({ corto, lang, es }) {
+  const videoRef = useRef(null);
+  const webmSrc = `${import.meta.env.BASE_URL}videos/${corto.videoBase}.webm`;
+  const mp4Src = `${import.meta.env.BASE_URL}videos/${corto.videoBase}.mp4`;
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
+  }, [corto.videoBase, lang]);
+
+  return (
+    <div className="corto-video-wrapper">
+      <span className="corto-duracion-badge">{corto.duracion}</span>
+      <video
+        ref={videoRef}
+        key={`${corto.id}-${lang}-${corto.videoBase}`}
+        className="corto-video-player"
+        controls
+        playsInline
+        preload="metadata"
+      >
+        <source src={webmSrc} type="video/webm" />
+        <source src={mp4Src} type="video/mp4" />
+        {es
+          ? 'Tu navegador no soporta reproducción de video HTML5.'
+          : 'Your browser does not support HTML5 video playback.'}
+      </video>
+    </div>
+  );
+}
+
 export default function SeccionCortos() {
   const modo = useAppStore((s) => s.modo);
   const siguienteEscena = useAppStore((s) => s.siguienteEscena);
-  const lang = useAppStore((s) => s.lang);
-  const setLang = useAppStore((s) => s.setLang);
-
-  const [idiomaLocal, setIdiomaLocal] = useState(lang === 'en' ? 'EN' : 'ES');
-  const idioma = lang ? (lang === 'en' ? 'EN' : 'ES') : idiomaLocal;
-
-  const cambiarIdioma = (nuevo) => {
-    setIdiomaLocal(nuevo);
-    if (setLang) setLang(nuevo.toLowerCase());
-  };
+  const storeLang = useAppStore((s) => s.lang);
+  const lang = storeLang || getLang() || 'en';
+  const es = lang === 'es';
+  const idioma = es ? 'ES' : 'EN';
 
   const listaCortos = CORTOS_INFO[idioma] || CORTOS_INFO.ES;
 
@@ -141,7 +168,7 @@ export default function SeccionCortos() {
       className="escena-scroll cortos-contenedor"
       tabIndex={0}
       role="region"
-      aria-label={idioma === 'ES' ? 'Cortos para tomar conciencia' : 'Awareness Short Films'}
+      aria-label={es ? 'Cortos para tomar conciencia' : 'Awareness Short Films'}
       onWheel={(e) => e.stopPropagation()}
       style={{ overflowY: 'auto' }}
     >
@@ -150,12 +177,12 @@ export default function SeccionCortos() {
         <div className="cortos-header-info">
           <div className="cortos-badge-acto">Acto 2 · Escena 12</div>
           <h1 className="cortos-titulo">
-            {idioma === 'ES'
+            {es
               ? 'Cortos para tomar conciencia'
               : 'Short Films for Global Awareness'}
           </h1>
           <p className="cortos-subtitulo">
-            {idioma === 'ES'
+            {es
               ? modo === 'ninos'
                 ? 'Cuatro historias con personajes propios en estilo cinematográfico (inspiración WALL-E, 100% original sin copyright). Cada corto concluye con una cifra científica verificada.'
                 : 'Producción audiovisual original del equipo en 1080p 60 FPS. Tono de narrativa inspirada en WALL-E con personajes propios, datos de fuentes primarias (NASA / ESA) y licencias de dominio público.'
@@ -163,28 +190,6 @@ export default function SeccionCortos() {
               ? 'Four original animated shorts inspired by WALL-E (original characters, no copyright). Each short concludes with a verified scientific fact.'
               : 'Original team audiovisual production rendered in 1080p 60 FPS. Storytelling tone inspired by WALL-E with original assets, primary sources (NASA / ESA), and public domain licenses.'}
           </p>
-        </div>
-
-        {/* Controles de Idioma */}
-        <div className="cortos-controles-barra">
-          <div className="cortos-idioma-toggle" role="group" aria-label="Selector de idioma">
-            <button
-              type="button"
-              className={`cortos-btn-idioma ${idioma === 'ES' ? 'activo' : ''}`}
-              onClick={() => cambiarIdioma('ES')}
-              title="Ver videos con subtítulos y audio en Español"
-            >
-              ES
-            </button>
-            <button
-              type="button"
-              className={`cortos-btn-idioma ${idioma === 'EN' ? 'activo' : ''}`}
-              onClick={() => cambiarIdioma('EN')}
-              title="Watch videos with English subtitles"
-            >
-              EN
-            </button>
-          </div>
         </div>
       </div>
 
@@ -197,22 +202,7 @@ export default function SeccionCortos() {
           return (
             <article key={corto.id} className="corto-card">
               {/* Reproductor de Video */}
-              <div className="corto-video-wrapper">
-                <span className="corto-duracion-badge">{corto.duracion}</span>
-                <video
-                  key={`${corto.videoBase}-${idioma}`}
-                  className="corto-video-player"
-                  controls
-                  playsInline
-                  preload="metadata"
-                >
-                  <source src={webmSrc} type="video/webm" />
-                  <source src={mp4Src} type="video/mp4" />
-                  {idioma === 'ES'
-                    ? 'Tu navegador no soporta reproducción de video HTML5.'
-                    : 'Your browser does not support HTML5 video playback.'}
-                </video>
-              </div>
+              <VideoPlayer corto={corto} lang={lang} es={es} />
 
               {/* Contenido e información */}
               <div className="corto-info">
