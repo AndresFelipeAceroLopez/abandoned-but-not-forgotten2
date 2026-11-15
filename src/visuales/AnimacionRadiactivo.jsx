@@ -1,6 +1,7 @@
 // Generadores de radioisótopos (RTG) y reactor con NaK, con calor animado y símbolo de átomo girando.
 import { useId } from 'react';
 import { C, T, TF, Lienzo, Estrellas, Atomo, Texto } from './comunes.jsx';
+import { t, tr } from '../i18n';
 
 export const TIPOS_RADIACTIVO = {
   snap27: { nombre: 'SNAP-27', uso: 'ALSEP · Apollo 12 a 17', isotopo: 'Pu-238', vida: 'vida media 87,7 años', reactor: false },
@@ -48,15 +49,17 @@ function ReactorNak({ id }) {
 export default function AnimacionRadiactivo({ tipo = 'snap27', size = 200, className = '', style }) {
   const id = useId();
   const d = TIPOS_RADIACTIVO[tipo] || { ...TIPOS_RADIACTIVO.snap27, nombre: 'RTG', uso: 'generador de radioisótopos' };
-  const etiqueta = d.reactor ? `${d.nombre}: reactor nuclear que suelta gotas de ${d.isotopo}` : `${d.nombre}: generador de radioisótopos con ${d.isotopo}, ${d.vida}`;
+  const etiqueta = d.reactor
+    ? tr(`${d.nombre}: reactor nuclear que suelta gotas de ${d.isotopo}`, `${t(d.nombre)}: nuclear reactor releasing ${d.isotopo} droplets`)
+    : tr(`${d.nombre}: generador de radioisótopos con ${d.isotopo}, ${d.vida}`, `${d.nombre}: radioisotope generator with ${d.isotopo}, ${t(d.vida)}`);
   return (
     <Lienzo size={size} ancho={200} alto={200} etiqueta={etiqueta} className={`v-radiactivo v-radiactivo-${tipo} ${className}`} style={style}>
       <Estrellas n={10} ancho={200} alto={200} semilla={9} tenue />
       {d.reactor ? <ReactorNak id={`${id}g`} /> : <Rtg id={`${id}g`} />}
       <circle cx="166" cy="40" r="20" fill={C.sup} stroke={C.rojo} strokeOpacity="0.5" strokeWidth="1" />
       <Atomo x={166} y={40} r={13} dur="12s" />
-      <Texto x={100} y={180} tam={9} color={C.tinta}>{d.nombre} · {d.uso}</Texto>
-      <Texto x={100} y={193} tam={7} color={d.reactor ? C.azul : C.rojo} className="v-fino">{d.isotopo} · {d.vida}</Texto>
+      <Texto x={100} y={180} tam={9} color={C.tinta}>{`${t(d.nombre)} · ${t(d.uso)}`}</Texto>
+      <Texto x={100} y={193} tam={7} color={d.reactor ? C.azul : C.rojo} className="v-fino">{`${d.isotopo} · ${t(d.vida)}`}</Texto>
     </Lienzo>
   );
 }

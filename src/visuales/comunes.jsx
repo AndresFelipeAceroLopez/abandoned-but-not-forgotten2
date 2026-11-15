@@ -1,5 +1,6 @@
 // Piezas compartidas de la biblioteca de visuales: lienzo SVG, estrellas, planetas básicos, satélite, átomo, etiquetas.
 import { useId } from 'react';
+import { t } from '../i18n';
 
 export const C = {
   azul: '#3987e5', naranja: '#d95926', aqua: '#199e70', oro: '#c98500', magenta: '#d55181', verde: '#008300',
@@ -16,7 +17,7 @@ export function Lienzo({ size = 160, ancho = 100, alto = 100, etiqueta = 'Ilustr
   return (
     <svg
       role="img"
-      aria-label={etiqueta}
+      aria-label={t(etiqueta)}
       viewBox={`0 0 ${ancho} ${alto}`}
       width={w}
       height={Math.round((w * alto) / ancho)}
@@ -24,7 +25,7 @@ export function Lienzo({ size = 160, ancho = 100, alto = 100, etiqueta = 'Ilustr
       style={style}
       {...rest}
     >
-      <title>{etiqueta}</title>
+      <title>{t(etiqueta)}</title>
       {children}
     </svg>
   );
@@ -101,15 +102,25 @@ export function Sol({ x = 50, y = 50, r = 16, rayos = 12 }) {
     <g>
       <defs>
         <radialGradient id={id} cx="40%" cy="35%" r="75%"><stop offset="0" stopColor="#ffe8a3" /><stop offset="0.55" stopColor={C.oro} /><stop offset="1" stopColor={C.naranja} /></radialGradient>
+        {/* Relieve: ruido fractal iluminado de lado (granulación solar), recortado al disco. */}
+        <filter id={`${id}r`} x="-5%" y="-5%" width="110%" height="110%" colorInterpolationFilters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency={2.4 / r} numOctaves="3" seed="7" result="ruido" />
+          <feDiffuseLighting in="ruido" surfaceScale={r * 0.16} diffuseConstant="1.2" lightingColor="#fff6dc" result="luz"><feDistantLight azimuth="225" elevation="56" /></feDiffuseLighting>
+          <feComposite in="luz" in2="SourceGraphic" operator="in" result="relieve" />
+          <feBlend in="SourceGraphic" in2="relieve" mode="multiply" />
+        </filter>
+        <radialGradient id={`${id}l`} cx="50%" cy="50%" r="50%"><stop offset="0.6" stopColor="#8a3200" stopOpacity="0" /><stop offset="1" stopColor="#8a3200" stopOpacity="0.45" /></radialGradient>
       </defs>
-      <circle cx={x} cy={y} r={r * 1.45} fill={C.oro} opacity="0.14" className="v-latir v-centro" style={{ '--dur': '4s' }} />
+      {/* El halo va dentro de un grupo tenue: la animación v-latir cambia la opacidad del círculo y lo volvía un disco sólido. */}
+      <g opacity="0.2"><circle cx={x} cy={y} r={r * 1.45} fill={C.oro} className="v-latir v-centro" style={{ '--dur': '4s' }} /></g>
       <g className="v-girar" style={{ transformOrigin: `${x}px ${y}px`, '--dur': '24s' }} stroke={C.oro} strokeWidth="1.2" strokeLinecap="round" opacity="0.8">
         {Array.from({ length: rayos }, (_, i) => {
           const a = (i / rayos) * Math.PI * 2; const l = i % 2 ? r * 1.35 : r * 1.6;
           return <line key={i} x1={x + Math.cos(a) * r * 1.15} y1={y + Math.sin(a) * r * 1.15} x2={x + Math.cos(a) * l} y2={y + Math.sin(a) * l} />;
         })}
       </g>
-      <circle cx={x} cy={y} r={r} fill={`url(#${id})`} />
+      <circle cx={x} cy={y} r={r} fill={`url(#${id})`} filter={`url(#${id}r)`} />
+      <circle cx={x} cy={y} r={r} fill={`url(#${id}l)`} />
     </g>
   );
 }
@@ -143,6 +154,7 @@ export function Atomo({ x = 50, y = 50, r = 10, color = C.rojo, girar = true, du
 
 /** Etiqueta tipo "chip": rectángulo redondeado con texto centrado. */
 export function Etiqueta({ x = 50, y = 50, texto = '', color = C.tinta2, fondo = C.sup, tam = 7, className = '', style }) {
+  texto = t(texto);
   const w = Math.max(12, String(texto).length * tam * 0.58 + tam * 1.4);
   const h = tam * 1.9;
   return (
@@ -155,7 +167,7 @@ export function Etiqueta({ x = 50, y = 50, texto = '', color = C.tinta2, fondo =
 
 /** Texto simple sin fondo. */
 export function Texto({ x, y, children, tam = 7, color = C.tinta2, anchor = 'middle', peso, className = '', style }) {
-  return <text x={x} y={y} textAnchor={anchor} fontSize={tam} fill={color} fontWeight={peso} className={className} style={style}>{children}</text>;
+  return <text x={x} y={y} textAnchor={anchor} fontSize={tam} fill={color} fontWeight={peso} className={className} style={style}>{typeof children === 'string' ? t(children) : children}</text>;
 }
 
 /** Suelo lunar/marciano: arco con cráteres. `ancho` del viewBox, `y` altura del horizonte. */

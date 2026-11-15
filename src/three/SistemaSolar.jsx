@@ -5,6 +5,8 @@ import { useFrame } from '@react-three/fiber';
 import { Html, Line } from '@react-three/drei';
 import * as THREE from 'three';
 import { PLANETAS, SONDAS, BASURA_SOLAR, escalaUA } from '../data/sistema_solar';
+import Sol from './Sol';
+import { t as traducir, tr } from '../i18n'; // (dentro del componente, `t` es el reloj simulado)
 
 const TAU = Math.PI * 2;
 const D2R = Math.PI / 180;
@@ -16,18 +18,6 @@ const posOrbita = (a, ang, e = 0) => {
 function Orbita({ a, e = 0, color = '#2c2c2a', puntos = 128 }) {
   const pts = useMemo(() => Array.from({ length: puntos + 1 }, (_, i) => posOrbita(a, (i / puntos) * TAU, e)), [a, e, puntos]);
   return <Line points={pts} color={color} lineWidth={1} transparent opacity={0.7} />;
-}
-
-function Sol() {
-  const ref = useRef();
-  useFrame((s) => { if (ref.current) ref.current.material.opacity = 0.35 + 0.1 * Math.sin(s.clock.elapsedTime * 2); });
-  return (
-    <group>
-      <mesh><sphereGeometry args={[0.42, 32, 32]} /><meshBasicMaterial color="#ffd166" toneMapped={false} /></mesh>
-      <mesh ref={ref}><sphereGeometry args={[0.6, 32, 32]} /><meshBasicMaterial color="#ff9f1c" transparent opacity={0.4} blending={THREE.AdditiveBlending} depthWrite={false} /></mesh>
-      <pointLight intensity={12} distance={40} decay={1.2} color="#fff2cc" />
-    </group>
-  );
 }
 
 function Etiqueta({ children, color }) {
@@ -120,7 +110,7 @@ export default function SistemaSolar({ modo = 'profundo', anios = 0.15, alineado
           <group ref={(g) => (refs.current[p.id] = g)} onClick={cuerpoClick({ tipo: 'planeta', ...p })} onPointerOver={() => setHover(p.id)} onPointerOut={() => setHover(null)}>
             <mesh><sphereGeometry args={[p.radio, 24, 24]} /><meshStandardMaterial color={p.color} roughness={0.9} /></mesh>
             {p.anillo && <mesh rotation={[Math.PI / 2.4, 0, 0]}><ringGeometry args={[p.radio * 1.4, p.radio * 2.1, 48]} /><meshBasicMaterial color="#cdb98a" side={THREE.DoubleSide} transparent opacity={0.7} /></mesh>}
-            {(mostrarEtiquetas || hover === p.id) && <Etiqueta color={p.color}><strong>{p.nombre}</strong></Etiqueta>}
+            {(mostrarEtiquetas || hover === p.id) && <Etiqueta color={p.color}><strong>{traducir(p.nombre)}</strong></Etiqueta>}
           </group>
         </group>
       ))}
@@ -129,7 +119,7 @@ export default function SistemaSolar({ modo = 'profundo', anios = 0.15, alineado
         <group key={s.id} ref={(g) => (refs.current[s.id] = g)} onClick={cuerpoClick({ tipo: 'sonda', ...s })} onPointerOver={() => setHover(s.id)} onPointerOut={() => setHover(null)}>
           <mesh><octahedronGeometry args={[0.07, 0]} /><meshBasicMaterial color="#c98500" toneMapped={false} /></mesh>
           <mesh><sphereGeometry args={[0.16, 8, 8]} /><meshBasicMaterial color="#c98500" transparent opacity={0.15} /></mesh>
-          {(mostrarEtiquetas || hover === s.id) && <Etiqueta color="#c98500"><strong>{s.nombre}</strong>{hover === s.id && <span>{s.modo === 'escape' ? `${s.distanciaUA} UA y alejándose` : s.nota}</span>}</Etiqueta>}
+          {(mostrarEtiquetas || hover === s.id) && <Etiqueta color="#c98500"><strong>{s.nombre}</strong>{hover === s.id && <span>{s.modo === 'escape' ? tr(`${s.distanciaUA} UA y alejándose`, `${s.distanciaUA} AU and moving away`) : traducir(s.nota)}</span>}</Etiqueta>}
         </group>
       ))}
       {modo === 'profundo' && SONDAS.filter((s) => s.modo === 'escape').map((s) => (
@@ -142,7 +132,7 @@ export default function SistemaSolar({ modo = 'profundo', anios = 0.15, alineado
           <group ref={(g) => (refs.current[b.id] = g)} onClick={cuerpoClick({ tipo: 'basura', ...b })} onPointerOver={() => setHover(b.id)} onPointerOut={() => setHover(null)}>
             <mesh rotation={[0.4, 0.3, 0.2]}><cylinderGeometry args={[0.025, 0.03, 0.12, 8]} /><meshStandardMaterial color="#c3c2b7" metalness={0.6} roughness={0.4} /></mesh>
             <mesh><sphereGeometry args={[0.12, 8, 8]} /><meshBasicMaterial transparent opacity={0} depthWrite={false} /></mesh>
-            {hover === b.id && <Etiqueta color="#c3c2b7"><strong>{b.nombre}</strong><span>{b.anio}</span></Etiqueta>}
+            {hover === b.id && <Etiqueta color="#c3c2b7"><strong>{traducir(b.nombre)}</strong><span>{b.anio}</span></Etiqueta>}
           </group>
         </group>
       ))}

@@ -1,6 +1,7 @@
 // Un solo estado para toda la experiencia (Three.js, UI 2D y dashboard leen y escriben aquí).
 import { create } from 'zustand';
 import { ESCENAS } from '../data/escenas';
+import { getLang, setLang as fijarIdioma } from '../i18n';
 
 const leerURL = () => {
   const p = new URLSearchParams(window.location.search);
@@ -26,6 +27,7 @@ export const FILTROS_INICIALES = {
 
 export const useAppStore = create((set, get) => ({
   ...leerURL(),
+  lang: getLang(), // 'en' (por defecto) | 'es'
   colorPor: 'tipo', // órbita: 'tipo' | 'pais' | 'identificado' | 'nube' | 'union'
   velocidad: 60, // minutos simulados por segundo real (mapa orbital)
   filtros: FILTROS_INICIALES,
@@ -34,6 +36,7 @@ export const useAppStore = create((set, get) => ({
   temaViz: 'dark',
 
   setModo: (modo) => set({ modo }),
+  setLang: (lang) => { fijarIdioma(lang); set({ lang: getLang() }); },
   setEscena: (escena) => set({ escena, objetoSeleccionado: null }),
   setAnio: (anio) => set({ anio: Math.min(2026, Math.max(1957, Math.round(anio))) }),
   seleccionar: (id) => set({ objetoSeleccionado: id }),
@@ -68,9 +71,10 @@ export const useAppStore = create((set, get) => ({
   },
 }));
 
-// Mantiene el modo, la escena, el año y el objeto en la URL (compartible, sin recargar).
+// Mantiene el idioma, el modo, la escena, el año y el objeto en la URL (compartible, sin recargar).
 useAppStore.subscribe((s) => {
   const p = new URLSearchParams();
+  if (s.lang !== 'en') p.set('lang', s.lang);
   if (s.modo) p.set('modo', s.modo);
   if (s.escena && s.escena !== 'inicio') p.set('escena', s.escena);
   if (s.objetoSeleccionado) p.set('obj', s.objetoSeleccionado);

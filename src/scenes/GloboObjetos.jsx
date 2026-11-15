@@ -1,7 +1,7 @@
 // Globo (Luna o Marte) con marcadores por lat/lon, filtros, bandeja de "perdidos", ficha y buscador.
 import { useMemo, useState } from 'react';
 import { useAppStore } from '../store/useAppStore';
-import datos from '../data/objetos.json';
+import { OBJETOS, porId } from '../data/objetos';
 import Escena3D from '../three/Escena3D';
 import Globo from '../three/Globo';
 import PlanetaGLB from '../three/PlanetaGLB';
@@ -14,9 +14,9 @@ import Buscador from '../ui/Buscador';
 import Quiz from '../ui/Quiz';
 import { latLonAVec3 } from '../lib/geo';
 import { num } from '../lib/formato';
+import { t, tr } from '../i18n';
 
-export const OBJETOS = datos.objetos;
-export const porId = (id) => OBJETOS.find((o) => o.id === id);
+export { OBJETOS, porId };
 
 export default function GloboObjetos({ cuerpo, pasos, panelExtra, colorPorInicial = 'tipo' }) {
   const { modo, objetoSeleccionado, seleccionar, filtros, setFiltro } = useAppStore();
@@ -50,7 +50,7 @@ export default function GloboObjetos({ cuerpo, pasos, panelExtra, colorPorInicia
         {cuerpo === 'marte' ? <PlanetaGLB cuerpo="marte" /> : <Globo cuerpo={cuerpo} />}
         <MarcadoresPrueba cuerpo={cuerpo} />
         <Marcadores objetos={enGlobo} seleccionadoId={sel?.id} onSelect={seleccionar} colorPor={colorEfectivo} />
-        {sel && sel.lat !== null && <ModeloObjeto objeto={sel} posicion={latLonAVec3(sel.lat, sel.lon, 1.03).toArray()} escala={0.04} />}
+        {sel && sel.lat !== null && <ModeloObjeto objeto={sel._es || sel} posicion={latLonAVec3(sel.lat, sel.lon, 1.03).toArray()} escala={0.04} />}
       </Escena3D>
 
       <div className="capa izq">
@@ -58,34 +58,43 @@ export default function GloboObjetos({ cuerpo, pasos, panelExtra, colorPorInicia
         {verQuiz && <Quiz />}
         <div className="panel tenue">
           <div className="controles-mapa">
-            <label>Programa
+            <label>{tr('Programa', 'Programme')}
               <select value={filtros.programa} onChange={(e) => setFiltro('programa', e.target.value)}>
-                <option value="todos">Todos ({todos.length})</option>
-                {programas.map((p) => <option key={p} value={p}>{p} ({todos.filter((o) => o.programa === p).length})</option>)}
+                <option value="todos">{tr('Todos', 'All')} ({todos.length})</option>
+                {programas.map((p) => <option key={p} value={p}>{t(p)} ({todos.filter((o) => o.programa === p).length})</option>)}
               </select>
             </label>
-            <label><input type="checkbox" checked={filtros.soloLRO} onChange={(e) => setFiltro('soloLRO', e.target.checked)} /> Solo vistos por LRO</label>
-            <label>Color
+            <label><input type="checkbox" checked={filtros.soloLRO} onChange={(e) => setFiltro('soloLRO', e.target.checked)} /> {tr('Solo vistos por LRO', 'Only seen by LRO')}</label>
+            <label>{tr('Color', 'Colour')}
               <select value={colorPor} onChange={(e) => setColorPor(e.target.value)}>
-                <option value="tipo">Tipo</option>
-                <option value="patrimonio">Patrimonio / activo</option>
-                <option value="radiactivo">Material radiactivo</option>
+                <option value="tipo">{tr('Tipo', 'Type')}</option>
+                <option value="patrimonio">{tr('Patrimonio / activo', 'Heritage / active')}</option>
+                <option value="radiactivo">{tr('Material radiactivo', 'Radioactive material')}</option>
               </select>
             </label>
-            {modo === 'ninos' && <button className="btn chico" onClick={() => setVerQuiz(!verQuiz)}>{verQuiz ? 'Volver a la historia' : 'Quiz'}</button>}
+            {modo === 'ninos' && <button className="btn chico" onClick={() => setVerQuiz(!verQuiz)}>{verQuiz ? tr('Volver a la historia', 'Back to the story') : 'Quiz'}</button>}
           </div>
           <div className="leyenda" style={{ marginTop: 8 }}>
-            {colorPor === 'tipo' && <><span><i style={{ background: '#3987e5' }} />Aterrizaje</span><span><i style={{ background: '#d95926' }} />Impacto a propósito</span><span><i style={{ background: '#e66767' }} />Se estrelló</span><span><i style={{ background: '#c98500' }} />Sigue activo</span><span>◯ Visto por LRO</span></>}
-            {colorPor === 'patrimonio' && <><span><i style={{ background: '#c98500' }} />Patrimonio o activo</span><span><i style={{ background: '#55554f' }} />Resto</span></>}
-            {colorPor === 'radiactivo' && <><span><i style={{ background: '#e66767' }} />Con fuente radiactiva</span><span><i style={{ background: '#55554f' }} />Resto</span></>}
+            {colorPor === 'tipo' && <><span><i style={{ background: '#3987e5' }} />{tr('Aterrizaje', 'Landing')}</span><span><i style={{ background: '#d95926' }} />{tr('Impacto a propósito', 'Deliberate impact')}</span><span><i style={{ background: '#e66767' }} />{tr('Se estrelló', 'Crashed')}</span><span><i style={{ background: '#c98500' }} />{tr('Sigue activo', 'Still active')}</span><span>◯ {tr('Visto por LRO', 'Seen by LRO')}</span></>}
+            {colorPor === 'patrimonio' && <><span><i style={{ background: '#c98500' }} />{tr('Patrimonio o activo', 'Heritage or active')}</span><span><i style={{ background: '#55554f' }} />{tr('Resto', 'Other')}</span></>}
+            {colorPor === 'radiactivo' && <><span><i style={{ background: '#e66767' }} />{tr('Con fuente radiactiva', 'With a radioactive source')}</span><span><i style={{ background: '#55554f' }} />{tr('Resto', 'Other')}</span></>}
           </div>
           <div style={{ marginTop: 8 }}><Buscador objetos={todos} onElegir={seleccionar} /></div>
-          <small>{enGlobo.length} en el globo · {perdidos.length} sin paradero · masa conocida en esta lista: {num(Math.round(masa), 0)} kg</small>
+          <small>
+            {tr(
+              `${enGlobo.length} en el globo · ${perdidos.length} sin paradero · masa conocida en esta lista: ${num(Math.round(masa), 0)} kg`,
+              `${enGlobo.length} on the globe · ${perdidos.length} with unknown whereabouts · known mass in this list: ${num(Math.round(masa), 0)} kg`,
+            )}
+          </small>
         </div>
         {perdidos.length > 0 && (
           <div className="panel tenue">
-            <strong>Bandeja: paradero desconocido ({perdidos.length})</strong>
-            <p className="mini">{cuerpo === 'luna' ? 'Quedaron en órbita sin seguimiento y cayeron en un sitio desconocido (código NSSDCA "g"). Son los papeles sin dueño.' : 'Se perdió el contacto antes de aterrizar y el sitio exacto de impacto no está confirmado.'}</p>
+            <strong>{tr('Bandeja: paradero desconocido', 'Tray: whereabouts unknown')} ({perdidos.length})</strong>
+            <p className="mini">
+              {cuerpo === 'luna'
+                ? tr('Quedaron en órbita sin seguimiento y cayeron en un sitio desconocido (código NSSDCA "g"). Son los papeles sin dueño.', 'They were left in orbit untracked and fell at an unknown site (NSSDCA code "g"). They are the ownerless papers.')
+                : tr('Se perdió el contacto antes de aterrizar y el sitio exacto de impacto no está confirmado.', 'Contact was lost before landing and the exact impact site is not confirmed.')}
+            </p>
             <div className="bandeja">{perdidos.map((o) => <button key={o.id} onClick={() => seleccionar(o.id)}>{o.nombre}</button>)}</div>
           </div>
         )}
