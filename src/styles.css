@@ -40,7 +40,8 @@ small, .mini { color: var(--tinta-3); font-size: 0.82rem; }
 .app > .escena { flex: 1; min-height: 0; }
 .escena { position: relative; overflow: hidden; }
 .escena > .escena { position: absolute; inset: 0; }
-.escena-scroll { position: relative; overflow: auto; padding: 24px clamp(16px, 4vw, 48px) 80px; }
+/* Páginas de documento: ocupan toda la escena y desplazan su propio contenido (sin esto el contenedor las recorta). */
+.escena-scroll { position: absolute; inset: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; padding: 24px clamp(16px, 4vw, 48px) 80px; }
 .lienzo-3d { position: absolute !important; inset: 0; }
 
 /* Navegación */
@@ -61,6 +62,12 @@ small, .mini { color: var(--tinta-3); font-size: 0.82rem; }
 .modo-toggle { display: inline-flex; border: 1px solid var(--borde); border-radius: 999px; overflow: hidden; }
 .modo-toggle button { background: transparent; border: 0; color: var(--tinta-2); padding: 5px 12px; font-size: 0.85rem; }
 .modo-toggle button.activa { background: var(--s1); color: #fff; }
+.modo-toggle.idioma button { padding: 5px 10px; font-weight: 600; letter-spacing: 0.03em; }
+
+/* Accesibilidad: foco visible con teclado y menos movimiento si el sistema lo pide */
+:focus-visible { outline: 2px solid #8ab8f2; outline-offset: 2px; }
+.nav button.marca { background: none; border: 0; color: inherit; padding: 0; font-size: inherit; }
+@media (prefers-reduced-motion: reduce) { .inicio .papel { animation: none; } .modo-card, .papel-card, .papel-volteo .cara { transition: none; } }
 
 /* Botones */
 .btn { background: var(--superficie-2); color: var(--tinta); border: 1px solid var(--borde); border-radius: 10px; padding: 9px 16px; font-weight: 600; }
@@ -78,7 +85,12 @@ small, .mini { color: var(--tinta-3); font-size: 0.82rem; }
 .chip.punto::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
 
 /* Pantalla de inicio */
-.inicio { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; overflow: auto; }
+.inicio { position: absolute; inset: 0; display: flex; padding: 56px 24px 32px; overflow-x: hidden; overflow-y: auto; }
+.inicio-caja { width: 100%; margin: auto; }
+.idioma-fijo { position: absolute; top: 12px; right: 14px; z-index: 6; }
+.video-principal { margin: 22px auto 0; max-width: 720px; }
+.video-principal video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; border: 1px solid var(--borde); background: #000; }
+.video-principal figcaption { margin-top: 6px; color: var(--tinta-3); font-size: 0.82rem; }
 .inicio-caja { max-width: 860px; text-align: center; }
 .inicio .papel { font-size: 3rem; display: inline-block; animation: flotar 5s ease-in-out infinite; }
 @keyframes flotar { 0%, 100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-14px) rotate(8deg); } }
@@ -185,6 +197,8 @@ small, .mini { color: var(--tinta-3); font-size: 0.82rem; }
 .grafico { background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio); padding: 14px 16px; }
 .grafico h3 { margin-bottom: 2px; }
 .grafico svg { width: 100%; height: auto; display: block; overflow: visible; }
+/* Los iconos (MiniPlaneta) dentro de un gráfico conservan su tamaño: la regla anterior es solo para el gráfico. */
+.grafico svg.visual { width: auto; flex-shrink: 0; }
 .grafico .tooltip { position: absolute; background: var(--plano); border: 1px solid var(--borde); border-radius: 8px; padding: 6px 9px; font-size: 0.8rem; pointer-events: none; white-space: nowrap; transform: translate(-50%, -115%); }
 .grafico .leyenda { margin-top: 8px; }
 .grafico details { margin-top: 8px; }

@@ -1,6 +1,7 @@
 // Escena de reentrada: fragmento con estela de fuego, paisaje con casa y tres marcadores de casos reales.
 import { useId } from 'react';
 import { C, T, TF, Lienzo, Estrellas, Texto } from './comunes.jsx';
+import { t, tr } from '../i18n';
 
 // Mismo orden que DANOS en src/data/contenido.js (índice 3, "Órbita y cielo", no tiene marcador en tierra).
 export const CASOS_DANOS = [
@@ -16,7 +17,7 @@ export const CASOS_DANOS = [
 export default function AnimacionDanos({ size = 420, caso = null, activo = true, className = '', style }) {
   const id = useId();
   const resaltado = CASOS_DANOS.find((c) => c.id === Number(caso));
-  const etiqueta = `Fragmento reentrando sobre un paisaje nocturno${resaltado ? `; caso resaltado: ${resaltado.nombre}` : ''}`;
+  const etiqueta = tr('Fragmento reentrando sobre un paisaje nocturno', 'Fragment re-entering over a night landscape') + (resaltado ? `${tr('; caso resaltado: ', '; highlighted case: ')}${t(resaltado.nombre)}` : '');
   return (
     <Lienzo size={size} ancho={320} alto={180} etiqueta={etiqueta} className={`v-danos ${activo ? '' : 'v-pausa'} ${className}`} style={style}>
       <defs>

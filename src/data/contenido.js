@@ -1,0 +1,21 @@
+// Contenido narrativo en el idioma activo. Los textos viven en contenido.es.js (original) y contenido.en.js.
+// Las exportaciones son enlaces vivos (live bindings): al cambiar de idioma se reasignan y la app se vuelve a montar.
+import * as es from './contenido.es';
+import * as en from './contenido.en';
+import { getLang, onLang } from '../i18n';
+
+export let GUION, PROLOGO_PASOS, LUNA_PASOS, MARTE_PASOS, PROFUNDO_PASOS, CIERRE, MITOS, SESGOS, HISTORIA_1957, CURIOSIDADES_ORBITA,
+  EFECTOS, FUTURO, PATRONES, APOLLO_MUESTRAS, DANOS, DANOS_TEXTO, RADIACTIVOS, RADIACTIVOS_TEXTO, SIN_NOMBRE, SIN_NOMBRE_TEXTO,
+  NO_ES_BASURA, ASAT, PAISES_TEXTO, UNION, UNION_TEXTO, CORTOS, CORTOS_NOTA, SOLUCIONES, MEDIDAS_TECNICAS, SOLUCIONES_FALTA,
+  PROPUESTA, QUIZ, PREGUNTAS_GENERALES;
+
+function aplicar() {
+  ({
+    GUION, PROLOGO_PASOS, LUNA_PASOS, MARTE_PASOS, PROFUNDO_PASOS, CIERRE, MITOS, SESGOS, HISTORIA_1957, CURIOSIDADES_ORBITA,
+    EFECTOS, FUTURO, PATRONES, APOLLO_MUESTRAS, DANOS, DANOS_TEXTO, RADIACTIVOS, RADIACTIVOS_TEXTO, SIN_NOMBRE, SIN_NOMBRE_TEXTO,
+    NO_ES_BASURA, ASAT, PAISES_TEXTO, UNION, UNION_TEXTO, CORTOS, CORTOS_NOTA, SOLUCIONES, MEDIDAS_TECNICAS, SOLUCIONES_FALTA,
+    PROPUESTA, QUIZ, PREGUNTAS_GENERALES,
+  } = getLang() === 'en' ? en : es);
+}
+aplicar();
+onLang(aplicar);

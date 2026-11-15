@@ -2,6 +2,10 @@
 // Paleta: slots validados para fondo oscuro (ver styles.css).
 import { useRef, useState } from 'react';
 import { num } from '../lib/formato';
+import { t, tr } from '../i18n';
+
+// Las claves vienen de los datos en español: se traducen solo al mostrarlas (los clics siguen usando la clave original).
+const corta = (s) => (s.length > 24 ? s.slice(0, 23) + '…' : s);
 
 const AZUL = '#3987e5', ORO = '#c98500';
 
@@ -14,7 +18,7 @@ export function Barras({ titulo, nota, datos, color = AZUL, horizontal = true, f
   const [tip, setTip] = useState(null);
   const ref = useRef();
   const max = Math.max(1, ...datos.map((d) => d.n));
-  const mover = (e, d) => { const r = ref.current.getBoundingClientRect(); setTip({ x: e.clientX - r.left, y: e.clientY - r.top, texto: `${d.clave}: ${formato(d.n)}` }); };
+  const mover = (e, d) => { const r = ref.current.getBoundingClientRect(); setTip({ x: e.clientX - r.left, y: e.clientY - r.top, texto: `${t(d.clave)}: ${formato(d.n)}` }); };
   if (horizontal) {
     const H = datos.length * 26 + 10, W = 420, L = 150;
     return (
@@ -27,7 +31,7 @@ export function Barras({ titulo, nota, datos, color = AZUL, horizontal = true, f
             return (
               <g key={d.clave} onMouseMove={(e) => mover(e, d)} onMouseLeave={() => setTip(null)} onClick={() => onClick?.(d)} style={{ cursor: onClick ? 'pointer' : 'default' }}>
                 <rect x={0} y={y} width={W} height={22} fill="transparent" />
-                <text x={L - 8} y={y + 15} textAnchor="end" className="axis-text" style={{ fill: '#c3c2b7' }}>{d.clave.length > 24 ? d.clave.slice(0, 23) + '…' : d.clave}</text>
+                <text x={L - 8} y={y + 15} textAnchor="end" className="axis-text" style={{ fill: '#c3c2b7' }}>{corta(t(d.clave))}</text>
                 <rect x={L} y={y + 4} width={Math.max(2, w)} height={14} fill={sel ? ORO : color} rx={0} />
                 <rect x={L + Math.max(2, w) - 4} y={y + 4} width={4} height={14} fill={sel ? ORO : color} rx={4} />
                 <text x={L + Math.max(2, w) + 6} y={y + 15} className="axis-text">{formato(d.n)}</text>
@@ -37,7 +41,7 @@ export function Barras({ titulo, nota, datos, color = AZUL, horizontal = true, f
           <line x1={L} x2={L} y1={2} y2={H - 4} className="baseline" />
         </svg>
         <Tooltip t={tip} />
-        <details><summary>Ver tabla</summary><table className="tabla"><tbody>{datos.map((d) => <tr key={d.clave}><td>{d.clave}</td><td className="num">{formato(d.n)}</td></tr>)}</tbody></table></details>
+        <details><summary>{tr('Ver tabla', 'View table')}</summary><table className="tabla"><tbody>{datos.map((d) => <tr key={d.clave}><td>{t(d.clave)}</td><td className="num">{formato(d.n)}</td></tr>)}</tbody></table></details>
       </div>
     );
   }
@@ -55,7 +59,7 @@ export function Barras({ titulo, nota, datos, color = AZUL, horizontal = true, f
             <g key={d.clave} onMouseMove={(e) => mover(e, d)} onMouseLeave={() => setTip(null)} onClick={() => onClick?.(d)} style={{ cursor: onClick ? 'pointer' : 'default' }}>
               <rect x={x} y={0} width={Math.max(1, bw - 2)} height={H - 24} fill="transparent" />
               <rect x={x} y={y} width={Math.max(1, bw - 2)} height={Math.max(1, h)} fill={sel ? ORO : color} />
-              {datos.length <= 12 && <text x={x + (bw - 2) / 2} y={H - 8} textAnchor="middle" className="axis-text">{d.clave}</text>}
+              {datos.length <= 12 && <text x={x + (bw - 2) / 2} y={H - 8} textAnchor="middle" className="axis-text">{t(d.clave)}</text>}
             </g>
           );
         })}
@@ -63,7 +67,7 @@ export function Barras({ titulo, nota, datos, color = AZUL, horizontal = true, f
         <line x1={P} x2={W - 5} y1={H - 24} y2={H - 24} className="baseline" />
       </svg>
       <Tooltip t={tip} />
-      <details><summary>Ver tabla</summary><table className="tabla"><tbody>{datos.map((d) => <tr key={d.clave}><td>{d.clave}</td><td className="num">{formato(d.n)}</td></tr>)}</tbody></table></details>
+      <details><summary>{tr('Ver tabla', 'View table')}</summary><table className="tabla"><tbody>{datos.map((d) => <tr key={d.clave}><td>{t(d.clave)}</td><td className="num">{formato(d.n)}</td></tr>)}</tbody></table></details>
     </div>
   );
 }
@@ -77,7 +81,7 @@ export function Dona({ titulo, nota, datos, formato = (v) => num(v, 0), icono })
   const ref = useRef();
   const top = datos.slice(0, 7);
   const resto = datos.slice(7).reduce((s, d) => s + d.n, 0);
-  const partes = resto ? [...top, { clave: 'Otros', n: resto }] : top;
+  const partes = resto ? [...top, { clave: tr('Otros', 'Other'), n: resto }] : top;
   const total = Math.max(1, partes.reduce((s, d) => s + d.n, 0));
   const R = 70, r = 44, C = 90;
   let acum = 0;
@@ -89,7 +93,7 @@ export function Dona({ titulo, nota, datos, formato = (v) => num(v, 0), icono })
     const [x0, y0] = p(a0, R), [x1, y1] = p(a1, R), [x2, y2] = p(a1, r), [x3, y3] = p(a0, r);
     return { d, i, path: `M${x0},${y0} A${R},${R} 0 ${grande} 1 ${x1},${y1} L${x2},${y2} A${r},${r} 0 ${grande} 0 ${x3},${y3} Z` };
   });
-  const mover = (e, d) => { const b = ref.current.getBoundingClientRect(); setTip({ x: e.clientX - b.left, y: e.clientY - b.top, texto: `${d.clave}: ${formato(d.n)} (${Math.round((d.n / total) * 100)} %)` }); };
+  const mover = (e, d) => { const b = ref.current.getBoundingClientRect(); setTip({ x: e.clientX - b.left, y: e.clientY - b.top, texto: `${t(d.clave)}: ${formato(d.n)} (${Math.round((d.n / total) * 100)}${tr(' %', '%')})` }); };
   return (
     <div className="grafico" ref={ref} style={{ position: 'relative' }}>
       <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>{icono}<div><h3>{titulo}</h3>{nota && <small>{nota}</small>}</div></div>
@@ -100,7 +104,7 @@ export function Dona({ titulo, nota, datos, formato = (v) => num(v, 0), icono })
           <text x={C} y={C + 14} textAnchor="middle" className="axis-text">total</text>
         </svg>
         <ul className="leyenda-lista">
-          {partes.map((d, i) => <li key={d.clave}><i style={{ background: CATEGORICA[i] }} /><span>{d.clave}</span><b>{formato(d.n)}</b></li>)}
+          {partes.map((d, i) => <li key={d.clave}><i style={{ background: CATEGORICA[i] }} /><span>{t(d.clave)}</span><b>{formato(d.n)}</b></li>)}
         </ul>
       </div>
       <Tooltip t={tip} />
@@ -142,7 +146,7 @@ export function Area({ titulo, nota, serie, color = AZUL, marcador, onClick, for
         {tip?.d && <g><line x1={X(tip.d.x)} x2={X(tip.d.x)} y1={12} y2={H - B} stroke="#898781" /><circle cx={X(tip.d.x)} cy={Y(tip.d.y)} r={4} fill={color} stroke="#1a1a19" strokeWidth={2} /></g>}
       </svg>
       <Tooltip t={tip} />
-      <details><summary>Ver tabla</summary><table className="tabla"><tbody>{serie.filter((_, i) => i % 5 === 0 || i === serie.length - 1).map((d) => <tr key={d.x}><td>{d.x}</td><td className="num">{formato(d.y)}</td></tr>)}</tbody></table></details>
+      <details><summary>{tr('Ver tabla', 'View table')}</summary><table className="tabla"><tbody>{serie.filter((_, i) => i % 5 === 0 || i === serie.length - 1).map((d) => <tr key={d.x}><td>{d.x}</td><td className="num">{formato(d.y)}</td></tr>)}</tbody></table></details>
     </div>
   );
 }
@@ -177,7 +181,7 @@ export function Linea({ titulo, nota, serie, color = AZUL, marcador, onClick, fo
         {tip?.d && <g><line x1={X(tip.d.x)} x2={X(tip.d.x)} y1={10} y2={H - B} stroke="#898781" /><circle cx={X(tip.d.x)} cy={Y(tip.d.y)} r={4} fill={color} stroke="#1a1a19" strokeWidth={2} /></g>}
       </svg>
       <Tooltip t={tip} />
-      <details><summary>Ver tabla</summary><table className="tabla"><tbody>{serie.filter((_, i) => i % 5 === 0 || i === serie.length - 1).map((d) => <tr key={d.x}><td>{d.x}</td><td className="num">{formato(d.y)}</td></tr>)}</tbody></table></details>
+      <details><summary>{tr('Ver tabla', 'View table')}</summary><table className="tabla"><tbody>{serie.filter((_, i) => i % 5 === 0 || i === serie.length - 1).map((d) => <tr key={d.x}><td>{d.x}</td><td className="num">{formato(d.y)}</td></tr>)}</tbody></table></details>
     </div>
   );
 }

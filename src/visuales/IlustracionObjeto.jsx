@@ -1,5 +1,6 @@
 // Ilustración plana de un objeto del catálogo, elegida por heurística sobre sus campos de texto.
 import { C, Lienzo, Estrellas, Atomo } from './comunes.jsx';
+import { t, tr } from '../i18n';
 import { DIBUJOS } from './piezas.jsx';
 
 export const CLASES_OBJETO = Object.keys(DIBUJOS);
@@ -14,6 +15,7 @@ const NOMBRE_CLASE = {
 /** Devuelve la clase de dibujo para un objeto del catálogo (nunca lanza; `objeto` puede venir incompleto). */
 export function claseObjeto(o) {
   if (!o || typeof o !== 'object') return 'nave';
+  o = o._es || o; // las palabras clave de abajo están en español: se usa siempre el texto original
   // `tipo` queda fuera del texto: "aterrizaje"/"orbita" describen el destino, no la forma del objeto.
   const t = [o.objeto, o.nombre, o.programa, o.mision].filter((v) => typeof v === 'string').join(' | ').toLowerCase();
   const es = (re) => re.test(t);
@@ -45,7 +47,7 @@ export function claseObjeto(o) {
 export default function IlustracionObjeto({ objeto, clase, size = 160, className = '', estrellas = true, style }) {
   const k = clase && DIBUJOS[clase] ? clase : claseObjeto(objeto);
   const Dibujo = DIBUJOS[k] || DIBUJOS.nave;
-  const nombre = objeto?.nombre ? `${objeto.nombre}: ${NOMBRE_CLASE[k]}` : `Ilustración de ${NOMBRE_CLASE[k]}`;
+  const nombre = objeto?.nombre ? `${objeto.nombre}: ${t(NOMBRE_CLASE[k])}` : tr(`Ilustración de ${NOMBRE_CLASE[k]}`, `Illustration of a ${t(NOMBRE_CLASE[k])}`);
   const semilla = (objeto?.id || k).length * 7 + 3;
   return (
     <Lienzo size={size} ancho={120} alto={120} etiqueta={nombre} className={`v-objeto v-objeto-${k} ${className}`} style={style}>

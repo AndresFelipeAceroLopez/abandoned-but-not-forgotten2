@@ -84,3 +84,12 @@ etl/                     # construir_orbita, fusionar_recursos, validar_datos, i
 ## Créditos de datos
 
 NASA NSSDCA, NASA ILRS, NASA JPL, NASA RPS, ESA Space Debris Office (DISCOS/MASTER-8), Space-Track.org (18 SPCS), Kilic (The Conversation, 2022), Johnson (NASA JSC, 2018), el catálogo `objects.json` y los modelos GLB del equipo, y las demás fuentes listadas en `src/data/referencias.json`. Textura lunar: NASA SVS (CGI Moon Kit).
+
+## Idiomas (inglés por defecto, español opcional)
+
+La interfaz abre en inglés y se cambia con el botón **EN | ES** (queda guardado en el navegador y en la URL: `?lang=es`).
+
+- `src/i18n/index.js`: idioma activo, `tr(es, en)` para textos de la interfaz y `t(es)` para etiquetas que vienen de los datos.
+- `src/i18n/en.js`: diccionario español → inglés de esas etiquetas (países, categorías, indicadores, notas, textos de las animaciones).
+- `src/data/contenido.es.js` / `contenido.en.js`: la narración de cada escena en cada idioma (mismas exportaciones).
+- `src/data/objetos.en.json`: textos en inglés de los 116 objetos, por id. Se genera con `node etl/i18n_objetos.mjs extraer|armar <carpeta>`; si se edita `objetos.json`, hay que traducir las cadenas nuevas y volver a armar.

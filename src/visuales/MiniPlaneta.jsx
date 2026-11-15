@@ -1,6 +1,7 @@
 // Iconos de 40–64 px: planetas con gradiente y pequeños pictogramas (satélite, cohete, átomo, bandera…).
 import { useId } from 'react';
 import { C, T, TF, Lienzo, Tierra, Luna, Sol, Satelite, Atomo, Texto } from './comunes.jsx';
+import { t, tr } from '../i18n';
 
 const NOMBRES = {
   sol: 'el Sol', mercurio: 'Mercurio', venus: 'Venus', tierra: 'la Tierra', luna: 'la Luna', marte: 'Marte', jupiter: 'Júpiter', saturno: 'Saturno', urano: 'Urano',
@@ -128,7 +129,7 @@ export default function MiniPlaneta({ tipo = 'luna', size = 48, className = '', 
   const nombre = NOMBRES[tipo];
   const planeta = ['sol', 'mercurio', 'venus', 'tierra', 'luna', 'marte', 'jupiter', 'saturno', 'urano', 'neptuno', 'ceres', 'asteroide'].includes(tipo);
   return (
-    <Lienzo size={size} ancho={64} alto={64} etiqueta={nombre ? `Icono de ${nombre}` : 'Icono desconocido'} className={`v-mini v-mini-${tipo} ${className}`} style={style}>
+    <Lienzo size={size} ancho={64} alto={64} etiqueta={nombre ? tr(`Icono de ${nombre}`, `Icon of ${t(nombre)}`) : tr('Icono desconocido', 'Unknown icon')} className={`v-mini v-mini-${tipo} ${className}`} style={style}>
       {planeta ? <g className="v-flotar" style={{ '--dur': '5s' }}><Planeta tipo={tipo} /></g> : nombre ? <Icono tipo={tipo} /> : (
         <g><Esfera r={20} colores={['#8c8a83', '#55544f', '#1a1a19']} /><Texto x={32} y={38} tam={18} color={C.tinta2}>?</Texto></g>
       )}

@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { useAppStore } from './store/useAppStore';
 import Nav from './ui/Nav';
 import Inicio from './scenes/Inicio';
+import { tr } from './i18n';
 
 // Cada escena se carga solo cuando se llega a ella (React.lazy + Suspense).
 const Prologo = lazy(() => import('./scenes/Prologo'));
@@ -29,13 +30,14 @@ const ESCENA = { prologo: Prologo, satelites: Satelites, luna: Luna, marte: Mart
 export default function App() {
   const modo = useAppStore((s) => s.modo);
   const escena = useAppStore((s) => s.escena);
+  const lang = useAppStore((s) => s.lang);
   const Comp = modo && escena !== 'inicio' ? ESCENA[escena] : null;
   return (
-    <div className="app">
+    <div className="app" key={lang}>{/* al cambiar de idioma se vuelve a montar todo con los textos nuevos */}
       <Nav />
       <div className="escena">
         {Comp ? (
-          <Suspense fallback={<div className="cargando"><div className="panel">Cargando…</div></div>}>
+          <Suspense fallback={<div className="cargando"><div className="panel" role="status">{tr("Cargando…", "Loading…")}</div></div>}>
             <Comp />
           </Suspense>
         ) : (
