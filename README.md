@@ -85,7 +85,8 @@ etl/                     # construir_orbita, fusionar_recursos, validar_datos, i
 
 NASA NSSDCA, NASA ILRS, NASA JPL, NASA RPS, ESA Space Debris Office (DISCOS/MASTER-8), Space-Track.org (18 SPCS), Kilic (The Conversation, 2022), Johnson (NASA JSC, 2018), el catálogo `objects.json` y los modelos GLB del equipo, y las demás fuentes listadas en `src/data/referencias.json`. Textura lunar: NASA SVS (CGI Moon Kit)
 
-##AUTORES
+## Autores
+
 Daniel Molina
 Mariana Cortes
 Andres Lopez
