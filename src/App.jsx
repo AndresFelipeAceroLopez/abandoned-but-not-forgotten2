@@ -13,6 +13,8 @@ const Profundo = lazy(() => import('./scenes/Profundo'));
 const Cierre = lazy(() => import('./scenes/Cierre'));
 const Dashboard = lazy(() => import('./dashboard/Dashboard'));
 const Referencias = lazy(() => import('./ui/Referencias'));
+const SeccionCortos = lazy(() => import('./ui/SeccionCortos'));
+const AnexoFotosModal = lazy(() => import('./ui/AnexoFotosModal'));
 const Acto2 = {
   danos: lazy(() => import('./scenes/Acto2').then((m) => ({ default: m.Danos }))),
   radiactivos: lazy(() => import('./scenes/Acto2').then((m) => ({ default: m.Radiactivos }))),
@@ -20,12 +22,12 @@ const Acto2 = {
   noesbasura: lazy(() => import('./scenes/Acto2').then((m) => ({ default: m.NoEsBasura }))),
   paises: lazy(() => import('./scenes/Acto2').then((m) => ({ default: m.Paises }))),
   union: lazy(() => import('./scenes/Acto2').then((m) => ({ default: m.Union }))),
-  cortos: lazy(() => import('./scenes/Acto2').then((m) => ({ default: m.Cortos }))),
+  cortos: SeccionCortos,
   soluciones: lazy(() => import('./scenes/Acto2').then((m) => ({ default: m.Soluciones }))),
   propuesta: lazy(() => import('./scenes/Acto2').then((m) => ({ default: m.Propuesta }))),
 };
 
-const ESCENA = { prologo: Prologo, satelites: Satelites, luna: Luna, marte: Marte, profundo: Profundo, cierre: Cierre, dashboard: Dashboard, referencias: Referencias, ...Acto2 };
+const ESCENA = { prologo: Prologo, satelites: Satelites, luna: Luna, marte: Marte, profundo: Profundo, cierre: Cierre, dashboard: Dashboard, referencias: Referencias, fotos: AnexoFotosModal, ...Acto2 };
 
 export default function App() {
   const modo = useAppStore((s) => s.modo);
