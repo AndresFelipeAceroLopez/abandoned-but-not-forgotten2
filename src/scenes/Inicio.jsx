@@ -3,6 +3,7 @@ import { useAppStore } from '../store/useAppStore';
 import { tr } from '../i18n';
 import Idioma from '../ui/Idioma';
 import videoPrincipal from '../recursos/video_principal/videoFinal.mp4';
+import articuloPdf from '../articulo/NASA_App_Space_Challenge_EN-1.pdf';
 import posterVideo from '../recursos/video_principal/poster.jpg';
 
 export default function Inicio() {
@@ -12,8 +13,8 @@ export default function Inicio() {
   return (
     <div className="inicio">
       <Idioma className="idioma-fijo" />
+      <img className="logo-spaceapps" src="/marca/logo-circular.jpeg" alt="NASA Space Apps Challenge" />
       <main className="inicio-caja">
-        <img className="logo-spaceapps" src="/marca/logo-circular.jpeg" alt="NASA Space Apps Challenge" />
         <div className="papel" aria-hidden="true">📄</div>
         <h1>{tr('"Es solo un papel. No significa nada."', '"It\'s just a piece of paper. It means nothing."')}</h1>
         <p style={{ color: 'var(--tinta-2)', fontSize: '1.1rem' }}>
@@ -22,6 +23,7 @@ export default function Inicio() {
             'What humanity left in orbit, on the Moon, on Mars and in deep space. And the science each piece made possible.',
           )}
         </p>
+        <p className="enlace-articulo"><a href={articuloPdf} target="_blank" rel="noopener noreferrer">{tr('Visita nuestro artículo →', 'Visit our article →')}</a></p>
         <figure className="video-principal">
           <video controls playsInline preload="metadata" poster={posterVideo} aria-label={tr('Video principal del proyecto (30 segundos, en inglés)', 'Main project video (30 seconds)')}>
             <source src={videoPrincipal} type="video/mp4" />

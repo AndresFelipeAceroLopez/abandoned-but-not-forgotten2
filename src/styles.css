@@ -254,4 +254,6 @@ h1, h2 { font-family: var(--fuente-titulo); font-weight: 500; text-transform: up
 .nav-capitulos button.activa b { color: var(--rojo-nasa); }
 .modo-toggle button.activa { background: var(--rojo-nasa); }
 .btn.primario { background: var(--rojo-nasa); border-color: var(--rojo-nasa); }
-.logo-spaceapps { display: block; width: clamp(140px, 22vw, 220px); height: auto; margin: 0 auto 16px; }
+.logo-spaceapps { position: absolute; top: 14px; left: 16px; z-index: 5; width: clamp(64px, 8vw, 96px); height: auto; border-radius: 50%; }
+.enlace-articulo { margin: 14px 0 0; }
+.enlace-articulo a { color: var(--oro, #ffc94d); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
