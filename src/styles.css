@@ -1,8 +1,8 @@
 /* Lunar/Mars Memory · tema oscuro (espacio). Paleta de datos validada (dataviz, modo oscuro). */
 :root {
   color-scheme: dark;
-  --fondo: #05070d;
-  --plano: #0d0d0d;
+  --fondo: #000000;
+  --plano: #000000;
   --superficie: #1a1a19;
   --superficie-2: #232322;
   --borde: rgba(255, 255, 255, 0.1);
@@ -21,7 +21,7 @@
   --s8: #e66767; /* rojo */
   --oro: #c98500;
   --radio: 12px;
-  --fuente: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --fuente: 'Fira Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 * { box-sizing: border-box; }
 html, body, #root { height: 100%; margin: 0; }
@@ -244,3 +244,14 @@ small, .mini { color: var(--tinta-3); font-size: 0.82rem; }
 
 .video-propuesta { margin: 0 0 24px; max-width: 960px; }
 .video-propuesta video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; border: 1px solid var(--borde); background: #000; }
+
+/* Estilo NASA Space Apps Challenge: negro, blanco, rojo NASA y titulares condensados */
+:root { --rojo-nasa: #e43a26; --fuente-titulo: 'Fira Sans Extra Condensed', 'Fira Sans', system-ui, sans-serif; }
+h1, h2 { font-family: var(--fuente-titulo); font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; }
+.nav { background: rgba(0, 0, 0, 0.94); }
+.nav button.marca { display: inline-flex; align-items: center; gap: 10px; }
+.nav-logo { height: 28px; width: auto; display: block; }
+.nav-capitulos button.activa b { color: var(--rojo-nasa); }
+.modo-toggle button.activa { background: var(--rojo-nasa); }
+.btn.primario { background: var(--rojo-nasa); border-color: var(--rojo-nasa); }
+.logo-spaceapps { display: block; width: clamp(140px, 22vw, 220px); height: auto; margin: 0 auto 16px; }

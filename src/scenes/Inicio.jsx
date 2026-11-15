@@ -13,6 +13,7 @@ export default function Inicio() {
     <div className="inicio">
       <Idioma className="idioma-fijo" />
       <main className="inicio-caja">
+        <img className="logo-spaceapps" src="/marca/logo-circular.jpeg" alt="NASA Space Apps Challenge" />
         <div className="papel" aria-hidden="true">📄</div>
         <h1>{tr('"Es solo un papel. No significa nada."', '"It\'s just a piece of paper. It means nothing."')}</h1>
         <p style={{ color: 'var(--tinta-2)', fontSize: '1.1rem' }}>

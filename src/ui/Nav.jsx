@@ -15,6 +15,7 @@ export default function Nav() {
   return (
     <nav className="nav" aria-label={tr('Capítulos', 'Chapters')}>
       <button className="marca" onClick={() => setEscena('inicio')} title={tr('Volver al inicio', 'Back to home')}>
+        <img className="nav-logo" src="/marca/logo-horizontal.jpeg" alt="NASA Space Apps Challenge" />
         Lunar/Mars Memory <span>· Abandoned but not Forgotten</span>
       </button>
       <div className="nav-grupos">
