@@ -1,0 +1,533 @@
+{
+ "generado": "2026-11-15",
+ "fuente": "Space-Track.org (18 SPCS), catálogo OMM exportado por el equipo",
+ "nota": "Cuenta objetos catalogados por Space-Track (≥ ~10 cm). No incluye los que no se rastrean. \"En órbita\" = lanzado antes del fin del año y sin fecha de reentrada anterior.",
+ "total_catalogado": 68744,
+ "en_orbita_hoy": 34494,
+ "por_anio": [
+  {
+   "anio": 1957,
+   "en_orbita": 3,
+   "catalogados_nuevos": 0,
+   "reentrados": 0
+  },
+  {
+   "anio": 1958,
+   "en_orbita": 14,
+   "catalogados_nuevos": 7,
+   "reentrados": 0
+  },
+  {
+   "anio": 1959,
+   "en_orbita": 47,
+   "catalogados_nuevos": 16,
+   "reentrados": 4
+  },
+  {
+   "anio": 1960,
+   "en_orbita": 150,
+   "catalogados_nuevos": 51,
+   "reentrados": 19
+  },
+  {
+   "anio": 1961,
+   "en_orbita": 540,
+   "catalogados_nuevos": 404,
+   "reentrados": 54
+  },
+  {
+   "anio": 1962,
+   "en_orbita": 600,
+   "catalogados_nuevos": 180,
+   "reentrados": 124
+  },
+  {
+   "anio": 1963,
+   "en_orbita": 853,
+   "catalogados_nuevos": 334,
+   "reentrados": 86
+  },
+  {
+   "anio": 1964,
+   "en_orbita": 1432,
+   "catalogados_nuevos": 275,
+   "reentrados": 111
+  },
+  {
+   "anio": 1965,
+   "en_orbita": 2320,
+   "catalogados_nuevos": 1385,
+   "reentrados": 239
+  },
+  {
+   "anio": 1966,
+   "en_orbita": 2515,
+   "catalogados_nuevos": 570,
+   "reentrados": 338
+  },
+  {
+   "anio": 1967,
+   "en_orbita": 2657,
+   "catalogados_nuevos": 420,
+   "reentrados": 294
+  },
+  {
+   "anio": 1968,
+   "en_orbita": 3033,
+   "catalogados_nuevos": 666,
+   "reentrados": 284
+  },
+  {
+   "anio": 1969,
+   "en_orbita": 3283,
+   "catalogados_nuevos": 612,
+   "reentrados": 320
+  },
+  {
+   "anio": 1970,
+   "en_orbita": 3982,
+   "catalogados_nuevos": 886,
+   "reentrados": 272
+  },
+  {
+   "anio": 1971,
+   "en_orbita": 4232,
+   "catalogados_nuevos": 603,
+   "reentrados": 311
+  },
+  {
+   "anio": 1972,
+   "en_orbita": 4668,
+   "catalogados_nuevos": 639,
+   "reentrados": 351
+  },
+  {
+   "anio": 1973,
+   "en_orbita": 4908,
+   "catalogados_nuevos": 761,
+   "reentrados": 437
+  },
+  {
+   "anio": 1974,
+   "en_orbita": 5305,
+   "catalogados_nuevos": 702,
+   "reentrados": 352
+  },
+  {
+   "anio": 1975,
+   "en_orbita": 6001,
+   "catalogados_nuevos": 1108,
+   "reentrados": 404
+  },
+  {
+   "anio": 1976,
+   "en_orbita": 6549,
+   "catalogados_nuevos": 987,
+   "reentrados": 406
+  },
+  {
+   "anio": 1977,
+   "en_orbita": 6887,
+   "catalogados_nuevos": 918,
+   "reentrados": 471
+  },
+  {
+   "anio": 1978,
+   "en_orbita": 7246,
+   "catalogados_nuevos": 759,
+   "reentrados": 512
+  },
+  {
+   "anio": 1979,
+   "en_orbita": 7422,
+   "catalogados_nuevos": 855,
+   "reentrados": 620
+  },
+  {
+   "anio": 1980,
+   "en_orbita": 7468,
+   "catalogados_nuevos": 627,
+   "reentrados": 557
+  },
+  {
+   "anio": 1981,
+   "en_orbita": 8260,
+   "catalogados_nuevos": 1177,
+   "reentrados": 623
+  },
+  {
+   "anio": 1982,
+   "en_orbita": 10247,
+   "catalogados_nuevos": 2731,
+   "reentrados": 548
+  },
+  {
+   "anio": 1983,
+   "en_orbita": 10642,
+   "catalogados_nuevos": 878,
+   "reentrados": 491
+  },
+  {
+   "anio": 1984,
+   "en_orbita": 10841,
+   "catalogados_nuevos": 728,
+   "reentrados": 546
+  },
+  {
+   "anio": 1985,
+   "en_orbita": 11304,
+   "catalogados_nuevos": 778,
+   "reentrados": 435
+  },
+  {
+   "anio": 1986,
+   "en_orbita": 12075,
+   "catalogados_nuevos": 1359,
+   "reentrados": 529
+  },
+  {
+   "anio": 1987,
+   "en_orbita": 12511,
+   "catalogados_nuevos": 1155,
+   "reentrados": 618
+  },
+  {
+   "anio": 1988,
+   "en_orbita": 12367,
+   "catalogados_nuevos": 811,
+   "reentrados": 937
+  },
+  {
+   "anio": 1989,
+   "en_orbita": 12173,
+   "catalogados_nuevos": 882,
+   "reentrados": 1053
+  },
+  {
+   "anio": 1990,
+   "en_orbita": 12181,
+   "catalogados_nuevos": 678,
+   "reentrados": 547
+  },
+  {
+   "anio": 1991,
+   "en_orbita": 12437,
+   "catalogados_nuevos": 803,
+   "reentrados": 553
+  },
+  {
+   "anio": 1992,
+   "en_orbita": 12761,
+   "catalogados_nuevos": 737,
+   "reentrados": 358
+  },
+  {
+   "anio": 1993,
+   "en_orbita": 14699,
+   "catalogados_nuevos": 2179,
+   "reentrados": 230
+  },
+  {
+   "anio": 1994,
+   "en_orbita": 15773,
+   "catalogados_nuevos": 1291,
+   "reentrados": 188
+  },
+  {
+   "anio": 1995,
+   "en_orbita": 16095,
+   "catalogados_nuevos": 528,
+   "reentrados": 172
+  },
+  {
+   "anio": 1996,
+   "en_orbita": 16095,
+   "catalogados_nuevos": 226,
+   "reentrados": 239
+  },
+  {
+   "anio": 1997,
+   "en_orbita": 16690,
+   "catalogados_nuevos": 1013,
+   "reentrados": 412
+  },
+  {
+   "anio": 1998,
+   "en_orbita": 17216,
+   "catalogados_nuevos": 902,
+   "reentrados": 394
+  },
+  {
+   "anio": 1999,
+   "en_orbita": 21065,
+   "catalogados_nuevos": 4292,
+   "reentrados": 433
+  },
+  {
+   "anio": 2000,
+   "en_orbita": 21405,
+   "catalogados_nuevos": 741,
+   "reentrados": 401
+  },
+  {
+   "anio": 2001,
+   "en_orbita": 21554,
+   "catalogados_nuevos": 569,
+   "reentrados": 410
+  },
+  {
+   "anio": 2002,
+   "en_orbita": 21436,
+   "catalogados_nuevos": 391,
+   "reentrados": 509
+  },
+  {
+   "anio": 2003,
+   "en_orbita": 21353,
+   "catalogados_nuevos": 220,
+   "reentrados": 291
+  },
+  {
+   "anio": 2004,
+   "en_orbita": 21362,
+   "catalogados_nuevos": 209,
+   "reentrados": 197
+  },
+  {
+   "anio": 2005,
+   "en_orbita": 21366,
+   "catalogados_nuevos": 184,
+   "reentrados": 212
+  },
+  {
+   "anio": 2006,
+   "en_orbita": 22241,
+   "catalogados_nuevos": 1155,
+   "reentrados": 257
+  },
+  {
+   "anio": 2007,
+   "en_orbita": 22349,
+   "catalogados_nuevos": 297,
+   "reentrados": 189
+  },
+  {
+   "anio": 2008,
+   "en_orbita": 22018,
+   "catalogados_nuevos": 415,
+   "reentrados": 744
+  },
+  {
+   "anio": 2009,
+   "en_orbita": 22080,
+   "catalogados_nuevos": 367,
+   "reentrados": 301
+  },
+  {
+   "anio": 2010,
+   "en_orbita": 22103,
+   "catalogados_nuevos": 394,
+   "reentrados": 376
+  },
+  {
+   "anio": 2011,
+   "en_orbita": 22269,
+   "catalogados_nuevos": 653,
+   "reentrados": 498
+  },
+  {
+   "anio": 2012,
+   "en_orbita": 22258,
+   "catalogados_nuevos": 468,
+   "reentrados": 474
+  },
+  {
+   "anio": 2013,
+   "en_orbita": 22227,
+   "catalogados_nuevos": 415,
+   "reentrados": 451
+  },
+  {
+   "anio": 2014,
+   "en_orbita": 22088,
+   "catalogados_nuevos": 531,
+   "reentrados": 674
+  },
+  {
+   "anio": 2015,
+   "en_orbita": 21908,
+   "catalogados_nuevos": 320,
+   "reentrados": 477
+  },
+  {
+   "anio": 2016,
+   "en_orbita": 21988,
+   "catalogados_nuevos": 343,
+   "reentrados": 266
+  },
+  {
+   "anio": 2017,
+   "en_orbita": 22299,
+   "catalogados_nuevos": 506,
+   "reentrados": 201
+  },
+  {
+   "anio": 2018,
+   "en_orbita": 22997,
+   "catalogados_nuevos": 943,
+   "reentrados": 249
+  },
+  {
+   "anio": 2019,
+   "en_orbita": 23440,
+   "catalogados_nuevos": 781,
+   "reentrados": 331
+  },
+  {
+   "anio": 2020,
+   "en_orbita": 24415,
+   "catalogados_nuevos": 1413,
+   "reentrados": 434
+  },
+  {
+   "anio": 2021,
+   "en_orbita": 25878,
+   "catalogados_nuevos": 1997,
+   "reentrados": 543
+  },
+  {
+   "anio": 2022,
+   "en_orbita": 26884,
+   "catalogados_nuevos": 3513,
+   "reentrados": 2502
+  },
+  {
+   "anio": 2023,
+   "en_orbita": 27954,
+   "catalogados_nuevos": 3136,
+   "reentrados": 2080
+  },
+  {
+   "anio": 2024,
+   "en_orbita": 29274,
+   "catalogados_nuevos": 3549,
+   "reentrados": 2209
+  },
+  {
+   "anio": 2025,
+   "en_orbita": 31912,
+   "catalogados_nuevos": 4559,
+   "reentrados": 1925
+  },
+  {
+   "anio": 2026,
+   "en_orbita": 34494,
+   "catalogados_nuevos": 3762,
+   "reentrados": 1177
+  }
+ ],
+ "por_pais": [
+  {
+   "clave": "EE. UU.",
+   "n": 17744
+  },
+  {
+   "clave": "URSS/Rusia",
+   "n": 6519
+  },
+  {
+   "clave": "China",
+   "n": 6226
+  },
+  {
+   "clave": "Reino Unido",
+   "n": 727
+  },
+  {
+   "clave": "Francia",
+   "n": 635
+  },
+  {
+   "clave": "Desconocido",
+   "n": 373
+  },
+  {
+   "clave": "Japón",
+   "n": 299
+  },
+  {
+   "clave": "Otros",
+   "n": 1971
+  }
+ ],
+ "por_tipo": [
+  {
+   "clave": "Carga útil",
+   "n": 19843
+  },
+  {
+   "clave": "Fragmento",
+   "n": 12332
+  },
+  {
+   "clave": "Etapa de cohete",
+   "n": 2268
+  },
+  {
+   "clave": "Sin identificar",
+   "n": 51
+  }
+ ],
+ "por_altura": [
+  {
+   "clave": "Órbita baja (< 2.000 km)",
+   "n": 29041
+  },
+  {
+   "clave": "Órbita media (2.000–35.000 km)",
+   "n": 3589
+  },
+  {
+   "clave": "Geoestacionaria y más alta (> 35.000 km)",
+   "n": 1864
+  }
+ ],
+ "nubes_asat": [
+  {
+   "clave": "Fengyun-1C (China, 2007)",
+   "tag": "FY1C",
+   "catalogados": 3530,
+   "en_orbita": 2310
+  },
+  {
+   "clave": "Kosmos 1408 (Rusia, 2021)",
+   "tag": "K1408",
+   "catalogados": 1806,
+   "en_orbita": 4
+  },
+  {
+   "clave": "Iridium 33 (choque 2009)",
+   "tag": "IR33",
+   "catalogados": 656,
+   "en_orbita": 115
+  },
+  {
+   "clave": "Kosmos 2251 (choque 2009)",
+   "tag": "K2251",
+   "catalogados": 1714,
+   "en_orbita": 606
+  },
+  {
+   "clave": "USA-193 (EE. UU., 2008)",
+   "tag": "USA193",
+   "catalogados": 174,
+   "en_orbita": 0
+  },
+  {
+   "clave": "Microsat-R (India, 2019)",
+   "tag": "MSR",
+   "catalogados": 129,
+   "en_orbita": 0
+  }
+ ]
+}

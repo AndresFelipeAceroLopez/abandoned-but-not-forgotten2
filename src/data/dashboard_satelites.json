@@ -1,0 +1,124 @@
+{
+ "generado": "2026-11-15",
+ "fuente": "objects.json del equipo (orbital_objects)",
+ "nota": "Instantánea de posiciones sin época documentada; cuenta solo objetos inactivos, cuerpos de cohete y fragmentos incluidos por el equipo (no es el catálogo completo).",
+ "total": 17309,
+ "por_categoria": [
+  {
+   "clave": "Fragmento",
+   "codigo": "DEBRIS",
+   "n": 12201
+  },
+  {
+   "clave": "Satélite inactivo",
+   "codigo": "INACTIVE_SATELLITE",
+   "n": 2855
+  },
+  {
+   "clave": "Cuerpo de cohete",
+   "codigo": "ROCKET_BODY",
+   "n": 2253
+  }
+ ],
+ "por_pais": [
+  {
+   "clave": "Comunidad de Estados Independientes (ex-URSS)",
+   "codigo": "CIS",
+   "n": 6119
+  },
+  {
+   "clave": "Estados Unidos",
+   "codigo": "US",
+   "n": 5034
+  },
+  {
+   "clave": "China",
+   "codigo": "PRC",
+   "n": 4580
+  },
+  {
+   "clave": "Francia",
+   "codigo": "FR",
+   "n": 560
+  },
+  {
+   "clave": "Japón",
+   "codigo": "JPN",
+   "n": 166
+  },
+  {
+   "clave": "India",
+   "codigo": "IND",
+   "n": 117
+  },
+  {
+   "clave": "Organización internacional de satélites",
+   "codigo": "ITSO",
+   "n": 112
+  },
+  {
+   "clave": "Global",
+   "codigo": "GLOB",
+   "n": 58
+  },
+  {
+   "clave": "Órbita",
+   "codigo": "ORB",
+   "n": 51
+  },
+  {
+   "clave": "Agencia Espacial Europea",
+   "codigo": "ESA",
+   "n": 49
+  },
+  {
+   "clave": "Otros",
+   "codigo": null,
+   "n": 463
+  }
+ ],
+ "por_altura": [
+  {
+   "clave": "< 500 km",
+   "n": 363
+  },
+  {
+   "clave": "500–1.000 km",
+   "n": 8657
+  },
+  {
+   "clave": "1.000–2.000 km",
+   "n": 3856
+  },
+  {
+   "clave": "2.000–20.000 km",
+   "n": 1760
+  },
+  {
+   "clave": "20.000–36.000 km",
+   "n": 1884
+  },
+  {
+   "clave": "> 36.000 km",
+   "n": 789
+  }
+ ],
+ "por_rcs": [
+  {
+   "clave": "Mediano (0,1–1 m²)",
+   "n": 8519
+  },
+  {
+   "clave": "Grande (> 1 m²)",
+   "n": 4232
+  },
+  {
+   "clave": "Pequeño (< 0,1 m²)",
+   "n": 4195
+  },
+  {
+   "clave": "Sin dato",
+   "n": 363
+  }
+ ]
+}

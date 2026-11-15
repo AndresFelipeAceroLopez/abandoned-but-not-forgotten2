@@ -1,0 +1,7 @@
+node_modules
+dist
+.vite
+*.log
+.DS_Store
+# Catálogo Space-Track completo (79 MB): queda fuera del repo; el ETL lo lee desde Descargas
+catalogo_satelites.json

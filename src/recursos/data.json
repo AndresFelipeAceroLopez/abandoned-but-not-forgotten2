@@ -1,0 +1,178 @@
+[
+  {
+    "body": "Moon",
+    "display_name": "La Luna",
+    "asset": "assets/moon.glb",
+    "artifacts": [
+      {
+        "id": "apollo-11-lunar-module",
+        "name": "Módulo Lunar Apolo 11 (Eagle) / EASEP",
+        "era": "1969",
+        "status": "Inactivo (etapa de descenso intacta en la superficie; etapa de ascenso abandonada en órbita lunar, destino final incierto)",
+        "launch_date": "1969-07-16",
+        "mass_kg": 15103,
+        "orbital_parameters": {
+          "periapsis_km": 15.0,
+          "apoapsis_km": 110.0,
+          "inclination_deg": 1.25,
+          "period_minutes": 120.0
+        },
+        "coordinates": { "lat": 0.6741, "lng": 23.4730 },
+        "story": "El primer vehículo tripulado en aterrizar en la Luna. Transportó al comandante Neil Armstrong y al piloto Buzz Aldrin hasta el Mar de la Tranquilidad ('Tranquility Base').",
+        "science_legacy": "Permitió los primeros pasos humanos en otro mundo, la recolección de unos 21.5 kg de muestras lunares y el despliegue del EASEP.",
+        "hardware_left": "Etapa de descenso del Módulo Lunar (patas, plataforma y motor) y el paquete de experimentos EASEP junto al retrorreflector láser."
+      }
+    ]
+  },
+  {
+    "body": "Mars",
+    "display_name": "Marte",
+    "asset": "assets/mars.glb",
+    "artifacts": [
+      {
+        "id": "sojourner-rover",
+        "name": "Rover Sojourner (Mars Pathfinder)",
+        "era": "1997",
+        "status": "Inactivo (la comunicación se perdió al agotarse la batería del módulo Pathfinder, septiembre de 1997)",
+        "launch_date": "1996-12-04",
+        "mass_kg": 10.5,
+        "orbital_parameters": {
+          "periapsis_km": null,
+          "apoapsis_km": null,
+          "inclination_deg": null,
+          "period_minutes": null
+        },
+        "coordinates": { "lat": 19.33, "lng": -33.52 },
+        "story": "El pionero de todos los rovers marcianos, entregado por la misión Pathfinder en Ares Vallis. Tenía el tamaño de un horno microondas.",
+        "science_legacy": "Demostró que era posible operar vehículos con movilidad robótica en otro planeta y analizó la composición química de rocas con su espectrómetro de rayos X.",
+        "hardware_left": "Chasis pequeño, panel solar y cámaras junto al módulo de aterrizaje Pathfinder."
+      },
+      {
+        "id": "spirit-rover",
+        "name": "Rover Spirit (MER-A)",
+        "era": "2004-2010",
+        "status": "Inactivo (atascado en arena blanda; último contacto en marzo de 2010)",
+        "launch_date": "2003-06-10",
+        "mass_kg": 185.0,
+        "orbital_parameters": {
+          "periapsis_km": null,
+          "apoapsis_km": null,
+          "inclination_deg": null,
+          "period_minutes": null
+        },
+        "coordinates": { "lat": -14.57, "lng": 175.47 },
+        "story": "Diseñado para una vida útil de 90 días marcianos, exploró el cráter Gusev y las Columbia Hills durante más de seis años.",
+        "science_legacy": "Halló evidencias de actividad hidrotermal y de agua en el pasado de Marte, incluyendo depósitos de sílice casi puro.",
+        "hardware_left": "Rover cubierto de polvo, con mástil de cámaras, brazo robótico y herramienta de abrasión de rocas."
+      },
+      {
+        "id": "opportunity-rover",
+        "name": "Rover Opportunity (MER-B)",
+        "era": "2004-2018",
+        "status": "Inactivo (perdió contacto durante una tormenta de polvo global en junio de 2018)",
+        "launch_date": "2003-07-07",
+        "mass_kg": 185.0,
+        "orbital_parameters": {
+          "periapsis_km": null,
+          "apoapsis_km": null,
+          "inclination_deg": null,
+          "period_minutes": null
+        },
+        "coordinates": { "lat": -1.95, "lng": 354.47 },
+        "story": "Aterrizó en Meridiani Planum y operó casi 15 años terrestres, recorriendo más de 45 km, muy por encima de su misión de 90 días.",
+        "science_legacy": "Encontró pruebas concluyentes de agua líquida ácida en el pasado, como las 'arándanos' de hematita y depósitos de sulfatos.",
+        "hardware_left": "Rover con paneles solares cubiertos de polvo, mástil de cámaras y brazo robótico, en el Valle de la Perseverancia (cráter Endeavour)."
+      },
+      {
+        "id": "viking-1-lander",
+        "name": "Lander Viking 1",
+        "era": "1976-1982",
+        "status": "Inactivo (misión terminada en noviembre de 1982)",
+        "launch_date": "1975-08-20",
+        "mass_kg": 576.0,
+        "orbital_parameters": {
+          "periapsis_km": null,
+          "apoapsis_km": null,
+          "inclination_deg": null,
+          "period_minutes": null
+        },
+        "coordinates": { "lat": 22.70, "lng": -47.95 },
+        "story": "La primera nave estadounidense en aterrizar con éxito en Marte (Chryse Planitia) y transmitir imágenes desde la superficie.",
+        "science_legacy": "Realizó los primeros experimentos biológicos in situ en busca de metabolismo microbiano, con resultados ambiguos que se atribuyen a la química del suelo.",
+        "hardware_left": "Lander de caja metálica, antena parabólica y brazo mecánico con cuchara de muestreo."
+      },
+      {
+        "id": "viking-2-lander",
+        "name": "Lander Viking 2",
+        "era": "1976-1980",
+        "status": "Inactivo (misión terminada en abril de 1980)",
+        "launch_date": "1975-09-09",
+        "mass_kg": 576.0,
+        "orbital_parameters": {
+          "periapsis_km": null,
+          "apoapsis_km": null,
+          "inclination_deg": null,
+          "period_minutes": null
+        },
+        "coordinates": { "lat": 47.64, "lng": -134.26 },
+        "story": "Gemelo de Viking 1, aterrizó en Utopia Planitia y transmitió imágenes de un paisaje rocoso, incluyendo escarcha invernal.",
+        "science_legacy": "Complementó los experimentos biológicos y meteorológicos de Viking 1 desde una latitud mucho más alta.",
+        "hardware_left": "Lander de caja metálica, antena parabólica y brazo mecánico con cuchara de muestreo."
+      },
+      {
+        "id": "phoenix-lander",
+        "name": "Lander Phoenix",
+        "era": "2008",
+        "status": "Inactivo (sin energía al llegar el invierno ártico, noviembre de 2008)",
+        "launch_date": "2007-08-04",
+        "mass_kg": 350.0,
+        "orbital_parameters": {
+          "periapsis_km": null,
+          "apoapsis_km": null,
+          "inclination_deg": null,
+          "period_minutes": null
+        },
+        "coordinates": { "lat": 68.22, "lng": -125.75 },
+        "story": "Aterrizó en la llanura ártica de Vastitas Borealis y excavó el suelo con un brazo robótico para alcanzar el hielo subterráneo.",
+        "science_legacy": "Confirmó la presencia de hielo de agua bajo la superficie y detectó percloratos en el suelo marciano.",
+        "hardware_left": "Plataforma fija con paneles solares circulares y brazo robótico."
+      },
+      {
+        "id": "insight-lander",
+        "name": "Lander InSight",
+        "era": "2018-2022",
+        "status": "Inactivo (paneles cubiertos de polvo, fin de la misión en diciembre de 2022)",
+        "launch_date": "2018-05-05",
+        "mass_kg": 358.0,
+        "orbital_parameters": {
+          "periapsis_km": null,
+          "apoapsis_km": null,
+          "inclination_deg": null,
+          "period_minutes": null
+        },
+        "coordinates": { "lat": 4.50, "lng": 135.62 },
+        "story": "Desplegó un sismómetro ultrasensible sobre una planicie tranquila de Elysium Planitia para escuchar el interior del planeta.",
+        "science_legacy": "Registró más de mil 'martemotos', y permitió estimar el grosor de la corteza, el tamaño del núcleo y detectar impactos de meteoritos.",
+        "hardware_left": "Plataforma fija con paneles solares circulares, sismómetro SEIS bajo su cúpula protectora y sonda térmica HP3."
+      },
+      {
+        "id": "ingenuity-helicopter",
+        "name": "Helicóptero Ingenuity",
+        "era": "2021-2024",
+        "status": "Inactivo (rotor dañado tras el vuelo 72; retirado en enero de 2024)",
+        "launch_date": "2020-07-30",
+        "mass_kg": 1.8,
+        "orbital_parameters": {
+          "periapsis_km": null,
+          "apoapsis_km": null,
+          "inclination_deg": null,
+          "period_minutes": null
+        },
+        "coordinates": { "lat": 18.4, "lng": 77.3 },
+        "story": "Viajó adosado al rover Perseverance y realizó 72 vuelos en la delgada atmósfera de Marte, superando por mucho sus 5 vuelos planeados.",
+        "science_legacy": "Demostró que el vuelo propulsado y controlado es viable en otros mundos, abriendo la era de la exploración aérea planetaria.",
+        "hardware_left": "Cuerpo de fibra de carbono, dos rotores coaxiales contrarrotativos y panel solar superior, en el cráter Jezero."
+      }
+    ]
+  }
+]

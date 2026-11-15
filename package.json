@@ -1,0 +1,28 @@
+{
+  "name": "abandoned-but-not-forgotten",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Lunar/Mars Memory · NASA Space Apps 2026 · Abandoned but not Forgotten",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "etl": "node etl/construir_orbita.mjs && node etl/validar_datos.mjs",
+    "etl:orbita": "node --max-old-space-size=4096 etl/construir_orbita.mjs",
+    "etl:validar": "node etl/validar_datos.mjs",
+    "etl:fusionar": "node etl/fusionar_recursos.mjs"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.0.0",
+    "@react-three/fiber": "^9.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.175.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.0",
+    "vite": "^6.0.0"
+  }
+}
