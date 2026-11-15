@@ -21,6 +21,7 @@ import {
   UNION, UNION_TEXTO, CORTOS, CORTOS_NOTA, SOLUCIONES, MEDIDAS_TECNICAS, SOLUCIONES_FALTA, PROPUESTA, SESGOS, EFECTOS, FUTURO, MITOS, HISTORIA_1957,
 } from '../data/contenido';
 import SeccionCortos from '../ui/SeccionCortos';
+import videoExplicacion from '../recursos/video_explicacion/video_subtitulado_ingles.mp4';
 
 function Pagina({ numero, titulo, intro, children, angosto, visual }) {
   const siguienteEscena = useAppStore((s) => s.siguienteEscena);
@@ -288,7 +289,12 @@ export function Propuesta() {
         </div>
       </div>
       <div className="contenido" style={{ padding: '24px clamp(16px, 4vw, 48px) 80px' }}>
-        {PROPUESTA.pendiente && <p className="pendiente">{tr('Borrador del equipo: confirmar texto, cifras y responsables antes de enviar.', 'Team draft: confirm text, figures and owners before submitting.')}</p>}
+        <figure className="video-propuesta">
+          <video controls playsInline preload="metadata" aria-label={tr('Video explicativo de la propuesta, subtitulado en inglés', 'Proposal explainer video, with English subtitles')}>
+            <source src={videoExplicacion} type="video/mp4" />
+            {tr('Tu navegador no puede reproducir este video.', 'Your browser cannot play this video.')}
+          </video>
+        </figure>
         <h2>{tr('Cómo se recoge: por fases', 'How it is collected: in phases')}</h2>
         <div className="tarjetas tarjetas-anchas">
           {fases().map((f) => (

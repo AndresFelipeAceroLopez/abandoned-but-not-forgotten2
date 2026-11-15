@@ -209,10 +209,9 @@ export const SOLUCIONES_FALTA = 'Falta lo más difícil: no existe un inventario
 
 // La sección "La solución que proponemos" está vacía en la planeación: el equipo debe completarla.
 export const PROPUESTA = {
-  pendiente: true,
   titulo: 'Recoger por fases y enviar al Sol',
   ninos: 'Nuestra idea: satélites que solo sirven para limpiar. Primero recogen todo lo que sea metal con un imán gigante; después, con una malla, lo demás. Cada país que manda satélites también los limpia. Y cuando Mercurio y Venus se esconden detrás del Sol, mandamos la basura hacia el Sol.',
-  org: 'Propuesta del equipo (borrador): remoción activa por fases con satélites dedicados a limpieza (fase 1: captación magnética de metales; fase 2: malla para no metálicos), protocolo "1 lanzamiento = 1 limpieza" para cada país que lance, regulación a definir (ONU/COSPAR/acuerdo multilateral), y envío de lo recogido hacia el Sol en las ventanas en que Mercurio y Venus quedan en conjunción superior (detrás del Sol respecto a la Tierra). Complementado con un inventario único y abierto, del que esta app es el prototipo.',
+  org: 'Propuesta del equipo: remoción activa por fases con satélites dedicados a limpieza (fase 1: captación magnética de metales; fase 2: malla para no metálicos), protocolo "1 lanzamiento = 1 limpieza" para cada país que lance, regulación a definir (ONU/COSPAR/acuerdo multilateral), y envío de lo recogido hacia el Sol en las ventanas en que Mercurio y Venus quedan en conjunción superior (detrás del Sol respecto a la Tierra). Complementado con un inventario único y abierto, del que esta app es el prototipo.',
   pasos: [
     'Satélites exclusivos para limpieza: fase 1 con captación magnética (metal), fase 2 con malla (otros materiales).',
     'Protocolo: cada país que manda satélites también los limpia; quién lo regula queda como decisión abierta.',

@@ -241,3 +241,6 @@ small, .mini { color: var(--tinta-3); font-size: 0.82rem; }
 /* Carga */
 .cargando { position: absolute; inset: 0; display: grid; place-items: center; color: var(--tinta-2); z-index: 4; pointer-events: none; }
 .pendiente { border: 1px dashed var(--s4); color: var(--s4); border-radius: 10px; padding: 10px 12px; font-size: 0.9rem; }
+
+.video-propuesta { margin: 0 0 24px; max-width: 960px; }
+.video-propuesta video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; border: 1px solid var(--borde); background: #000; }

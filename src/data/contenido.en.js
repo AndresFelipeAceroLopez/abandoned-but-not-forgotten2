@@ -209,10 +209,9 @@ export const SOLUCIONES_FALTA = 'The hardest part is still missing: there is no 
 
 // The section "The solution we propose" is empty in the planning document: the team must complete it.
 export const PROPUESTA = {
-  pendiente: true,
   titulo: 'Collect in phases and send it to the Sun',
   ninos: 'Our idea: satellites whose only job is to clean up. First they collect everything made of metal with a giant magnet; then, with a net, everything else. Every country that launches satellites also cleans them up. And when Mercury and Venus hide behind the Sun, we send the debris towards the Sun.',
-  org: 'Team proposal (draft): phased active removal with dedicated clean-up satellites (phase 1: magnetic capture of metals; phase 2: net for non-metallic items), a "1 launch = 1 clean-up" protocol for every launching country, regulation to be defined (UN/COSPAR/multilateral agreement), and sending what is collected towards the Sun in the windows when Mercury and Venus are at superior conjunction (behind the Sun as seen from Earth). Complemented by a single, open inventory, of which this app is the prototype.',
+  org: 'Team proposal: phased active removal with dedicated clean-up satellites (phase 1: magnetic capture of metals; phase 2: net for non-metallic items), a "1 launch = 1 clean-up" protocol for every launching country, regulation to be defined (UN/COSPAR/multilateral agreement), and sending what is collected towards the Sun in the windows when Mercury and Venus are at superior conjunction (behind the Sun as seen from Earth). Complemented by a single, open inventory, of which this app is the prototype.',
   pasos: [
     'Dedicated clean-up satellites: phase 1 with magnetic capture (metal), phase 2 with a net (other materials).',
     'Protocol: every country that launches satellites also cleans them up; who regulates it remains an open decision.',
