@@ -1,10 +1,13 @@
 /* Estilos cinematográficos oscuros para la Sección 12 Cortos (#0f131a) */
 .cortos-contenedor {
   background: #0f131a;
-  min-height: 100%;
+  position: absolute;
+  inset: 0;
   color: var(--tinta, #ffffff);
   padding: 24px clamp(16px, 4vw, 48px) 80px;
+  overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior: contain;
   box-sizing: border-box;
 }
 
@@ -283,4 +286,3 @@
     grid-template-columns: 1fr;
   }
 }
-

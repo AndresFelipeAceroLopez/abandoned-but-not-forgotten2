@@ -123,12 +123,28 @@ const CORTOS_INFO = {
 export default function SeccionCortos() {
   const modo = useAppStore((s) => s.modo);
   const siguienteEscena = useAppStore((s) => s.siguienteEscena);
-  const [idioma, setIdioma] = useState('ES');
+  const lang = useAppStore((s) => s.lang);
+  const setLang = useAppStore((s) => s.setLang);
+
+  const [idiomaLocal, setIdiomaLocal] = useState(lang === 'en' ? 'EN' : 'ES');
+  const idioma = lang ? (lang === 'en' ? 'EN' : 'ES') : idiomaLocal;
+
+  const cambiarIdioma = (nuevo) => {
+    setIdiomaLocal(nuevo);
+    if (setLang) setLang(nuevo.toLowerCase());
+  };
 
   const listaCortos = CORTOS_INFO[idioma] || CORTOS_INFO.ES;
 
   return (
-    <div className="cortos-contenedor">
+    <div
+      className="escena-scroll cortos-contenedor"
+      tabIndex={0}
+      role="region"
+      aria-label={idioma === 'ES' ? 'Cortos para tomar conciencia' : 'Awareness Short Films'}
+      onWheel={(e) => e.stopPropagation()}
+      style={{ overflowY: 'auto' }}
+    >
       {/* Cabecera */}
       <div className="cortos-header">
         <div className="cortos-header-info">
@@ -155,7 +171,7 @@ export default function SeccionCortos() {
             <button
               type="button"
               className={`cortos-btn-idioma ${idioma === 'ES' ? 'activo' : ''}`}
-              onClick={() => setIdioma('ES')}
+              onClick={() => cambiarIdioma('ES')}
               title="Ver videos con subtítulos y audio en Español"
             >
               ES
@@ -163,7 +179,7 @@ export default function SeccionCortos() {
             <button
               type="button"
               className={`cortos-btn-idioma ${idioma === 'EN' ? 'activo' : ''}`}
-              onClick={() => setIdioma('EN')}
+              onClick={() => cambiarIdioma('EN')}
               title="Watch videos with English subtitles"
             >
               EN
